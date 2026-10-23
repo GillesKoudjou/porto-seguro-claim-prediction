@@ -210,7 +210,7 @@ Three ensemble strategies were investigated: Simple Averaging, Weighted Averagin
 
 A detailed description of the methodology, experiments, results, and conclusions is available in the complete Advanced Data Analytics E-Portfolio.
 
-📄 [View the Full Project Report (PDF)](reports/ADA_E_Portfolio.pdf)
+📄 [View the Full Project Report (PDF)](docs/ADA_108_Takoufouet_Portfolio.pdf)
 
 ---
 
