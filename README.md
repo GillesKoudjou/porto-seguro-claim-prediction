@@ -159,33 +159,49 @@ The Weighted Average Ensemble achieved the highest ROC-AUC among the results pre
 
 ---
 
+
 ## 7. Visualizations and Key Findings
 
-### 7.1 Target Class Distribution
+### 7.1 Target Distribution and Class Imbalance
+
+The exploratory analysis revealed a highly imbalanced target variable, with only 3.39% of observations belonging to the positive class.
 
 ![Target Class Distribution](figures/target_distribution.png)
 
-**Key finding:** The dataset exhibits a substantial class imbalance, making accuracy alone insufficient for evaluating classification performance.
+**Key Finding:** The strong class imbalance makes accuracy an insufficient standalone evaluation metric. ROC-AUC, the normalized Gini coefficient, and Average Precision were therefore used to assess model performance.
 
 ### 7.2 Missing Value Analysis
 
-![Missing Value Analysis](figures/missing_values.png)
+Missing values were investigated across the anonymized features, with particular attention to variables containing high proportions of missing observations.
 
-**Key finding:** Missing-value patterns must be considered during preprocessing, as several anonymized features contain incomplete observations.
+![Missing Values Analysis](figures/missing_values.png)
 
-### 7.3 Model Performance Comparison
+**Key Finding:** Missingness was highly uneven across features. The highest missing-value rates were observed for `ps_car_03_cat` (68.88%), `ps_car_05_cat` (44.73%), and `ps_reg_03` (18.01%), highlighting the importance of appropriate preprocessing.
 
-![Model Comparison](figures/model_comparison.png)
+### 7.3 Feature Analysis
 
-**Key finding:** XGBoost outperformed the linear classifiers in the reported experiments, suggesting that nonlinear relationships and feature interactions are relevant to the prediction task.
+The contribution of different feature groups was investigated, including the anonymized `ps_calc` variables.
 
-### 7.4 Ensemble Learning Comparison
+![Feature Analysis](figures/feature_analysis.png)
 
-![Ensemble Comparison](figures/ensemble_comparison.png)
+**Key Finding:** The analysis helped assess whether the `ps_calc` features contributed useful predictive information and informed subsequent feature-selection experiments.
 
-**Key finding:** Weighted averaging provided a small improvement over the strongest individual model, while the benefits of ensemble learning depended on the combination strategy.
+### 7.4 Individual Model Comparison
 
----
+Logistic Regression, Linear SVM, and XGBoost were evaluated to compare linear classification approaches with gradient-boosted decision trees.
+
+![Individual Model Comparison](figures/model_comparison.png)
+
+**Key Finding:** XGBoost achieved a higher ROC-AUC (0.6398) than Logistic Regression (0.6276) and Linear SVM (0.6277), indicating an advantage for the boosted-tree approach in these experiments.
+
+### 7.5 Ensemble Learning Comparison
+
+Simple averaging, weighted averaging, and stacking were investigated to determine whether combining predictions could improve classification performance.
+
+![Ensemble Learning Comparison](figures/ensemble_comparison.png)
+
+**Key Finding:** The weighted averaging ensemble achieved a ROC-AUC of 0.6404, slightly exceeding the best individual XGBoost result (0.6398). This suggests a modest benefit from combining complementary model predictions.
+
 
 ## 8. Technologies and Tools
 
